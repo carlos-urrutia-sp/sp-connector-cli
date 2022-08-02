@@ -1,0 +1,14 @@
+name: check labels workflow
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize, updated, reopened]
+
+jobs:
+  check-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check labels
+        uses:  sailpoint/github-actions-eng-prerequisites/label-reviewer-check-action@main
+        with:
+          actions: "check-labels"
+          github-token: ${{ secrets.GITHUB_TOKEN}}
